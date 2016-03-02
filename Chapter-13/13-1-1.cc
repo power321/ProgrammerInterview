@@ -149,15 +149,47 @@ node* Sort(node *head)
 	return head;
 }
 
+//Reverse List
+node* Reverse(node *head)
+{
+	if(head == NULL || head->next == NULL)
+		return head;
+	
+	node *p1, *p2, *p3;
+	p1 = head; p2 = head->next;
+	while(p2)
+	{
+		p3 = p2->next;
+		p2->next = p1;
+		p1 = p2;
+		p2 = p3;
+	}
+	head->next = NULL;
+	head = p1;
+	return head;
+}
+
 int main()
 {
 	node *head = Create();
-	cout << Length(head) << endl;
+	cout << "First len = " << Length(head) << endl;
+	cout << "First ---------------";
 	Print(head);
+	cout << "First ---------------";
 	head = Delete(head, 4);
 	head = Insert(head, 7);
+
+	cout << "Del&Ins ---------------";
 	Print(head);
+	cout << "Del&Ins ---------------";
 	head = Sort(head);
+	cout << "Sort ---------------";
 	Print(head);
+	cout << "Sort ---------------";
+
+	cout << "Reverse ---------------";
+	head = Reverse(head);
+	Print(head);
+	cout << "Reverse ---------------";
 	return 0;
 }
