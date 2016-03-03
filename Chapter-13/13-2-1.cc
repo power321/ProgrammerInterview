@@ -7,7 +7,7 @@ using namespace std;
 struct node
 {
 	int data;
-	struct node *pre, *next;
+	node *pre, *next;
 };
 
 //Create Double LinkList
